@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { Routes } from "@angular/router";
+import { AuthGuard } from "./auth.guard";
 import { HomepageComponent } from "./homepage/homepage.component";
 import { UserComponent } from "./user/user.component";
 import { UsersComponent } from "./users/users.component";
@@ -9,6 +10,7 @@ export const APP_ROUTES: Routes = [
   { path: "", component: HomepageComponent },
   {
     path: "users",
+    canActivate: [AuthGuard],
     component: UsersComponent,
     children: [{ path: ":id", component: UserComponent }]
   },
